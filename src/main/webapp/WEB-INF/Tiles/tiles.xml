@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE tiles-definitions PUBLIC  
+       "-//Apache Software Foundation//DTD Tiles Configuration 2.0//EN"  
+       "http://tiles.apache.org/dtds/tiles-config_2_0.dtd"> 
+        
+<tiles-definitions>  
+    <definition name="TemplateUser"  
+        template="/WEB-INF/views/templates/TemplateUser.jsp">  
+        <put-attribute name="main-content" value="" />  
+    </definition>  
+    <definition name="home.index" extends="TemplateUser">    
+        <put-attribute name="main-content" value="/WEB-INF/views/home/index.jsp" />  
+    </definition> 
+    
+    <definition name="home.aboutus" extends="TemplateUser">    
+        <put-attribute name="main-content" value="/WEB-INF/views/aboutus/aboutus.jsp" />  
+    </definition>
+    
+    
+    <definition name="product.specials" extends="TemplateUser">    
+        <put-attribute name="main-content" value="/WEB-INF/views/product/specials.jsp" />  
+    </definition>
+    
+     <definition name="product.details" extends="TemplateUser">    
+        <put-attribute name="main-content" value="/WEB-INF/views/product/details.jsp" />  
+    </definition>
+    
+    <definition name="product.flowers" extends="TemplateUser">    
+        <put-attribute name="main-content" value="/WEB-INF/views/product/flowers.jsp" />  
+    </definition>
+    
+    <definition name="account.myaccount" extends="TemplateUser">    
+        <put-attribute name="main-content" value="/WEB-INF/views/account/myaccount.jsp" />  
+    </definition>
+    
+    <definition name="account.register" extends="TemplateUser">    
+        <put-attribute name="main-content" value="/WEB-INF/views/account/register.jsp" />  
+    </definition>
+    
+    
+    <definition name="account.welcome" extends="TemplateUser">    
+        <put-attribute name="main-content" value="/WEB-INF/views/account/welcome.jsp" />  
+    </definition>
+    
+    <definition name="contact.contact" extends="TemplateUser">    
+        <put-attribute name="main-content" value="/WEB-INF/views/contact/contact.jsp" />  
+    </definition>
+    
+     <definition name="cart.cart" extends="TemplateUser">    
+        <put-attribute name="main-content" value="/WEB-INF/views/cart/cart.jsp" />  
+    </definition>
+  
+</tiles-definitions>  
