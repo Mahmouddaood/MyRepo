@@ -1,0 +1,116 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:fn="http://java.sun.com/jsp/jstl/functions">
+
+<h:head>
+
+<title>home</title>
+<h:outputStylesheet  library="css" name="style.css"></h:outputStylesheet>
+
+
+</h:head>
+
+<body>
+<h:form prependId="false">
+<div id="wrap">
+  <div class="header">
+    <div class="logo"><a href="#">
+    <h:graphicImage name="logo.gif" library="images" />
+   </a></div>
+     <div id="menu">
+      <ul>
+        <li style="{fn:startWith(view.viewId , '/home') ? 'selected' : ''}"><h:commandLink action="#{HomeManagedBean.index()}" value="Home" /></li>
+        <li style="{fn:startWith(view.viewId , '/aboutus') ? 'selected' : ''}"><h:commandLink action="#{AboutUsManagedBean.index()}" value="AboutUs" /></li>
+        <li style="{fn:startWith(view.viewId , '/category') ? 'selected' : ''}"><h:commandLink action="#{ProductManagedBean.category()}" value="Category" /></li>
+        <li style="{fn:startWith(view.viewId , '/specials') ? 'selected' : ''}"><h:commandLink action="#{ProductManagedBean.specilas()}" value="Specials" /></li>
+        <li style="{fn:startWith(view.viewId , '/myaccount') ? 'selected' : ''}"><h:commandLink action="#{AccountManagedBean.myaccount()}" value="MyAccount" /></li>
+        <li style="{fn:startWith(view.viewId , '/register') ? 'selected' : ''}"><h:commandLink action="#{AccountManagedBean.register()}" value="Register" /></li>
+        <li style="{fn:startWith(view.viewId , '/prices') ? 'selected' : ''}"><h:commandLink action="#{ProductManagedBean.prices()}" value="Prices" /></li>
+        <li style="{fn:startWith(view.viewId , '/contact') ? 'selected' : ''}"><h:commandLink action="#{ContactManagedBean.index()}" value="Contact" /></li>
+      </ul>
+    </div> 
+  </div>
+  <div class="center_content">
+    <div class="left_content">
+     <ui:insert name="content" ></ui:insert>
+     
+    </div>
+    <!--end of left content-->
+    <div class="right_content">
+      <div class="languages_box"> <span class="red">Languages:</span> <a href="#" class="selected">
+      <h:graphicImage name="gb.gif" library="images" />
+      </a> <a href="#">
+         <h:graphicImage name="fr.gif" library="images" />
+      </a> <a href="#">   <h:graphicImage name="de.gif" library="images" /></a> </div>
+      <div class="currency"> <span class="red">Currency: </span> <a href="#">GBP</a> <a href="#">EUR</a> <a href="#" class="selected">USD</a> </div>
+      <div class="cart">
+        <div class="title"><span class="title_icon">   <h:graphicImage name="cart.gif" library="images" /></span>My cart</div>
+        <div class="home_cart_content"> 3 x items | <span class="red">TOTAL: 100$</span> </div>
+       <h:commandLink styleClass="view_cart" action="#{CartManagedBean.cart()}" >view cart</h:commandLink> </div>
+      <div class="title"><span class="title_icon">
+         <h:graphicImage name="bullet3.gif" library="images" />
+      </span>About Our Shop</div>
+      <div class="about">
+        <p>
+                 <h:graphicImage name="about.gif" library="images"  styleClass="right"/>
+        
+ Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud. </p>
+      </div>
+      <div class="right_box">
+        <div class="title"><span class="title_icon">
+          <h:graphicImage name="bullet4.gif" library="images"  />
+        </span>Promotions</div>
+        <div class="new_prod_box"> <a href="#">product name</a>
+          <div class="new_prod_bg"> <span class="new_icon">
+            <h:graphicImage name="promo_icon.gif" library="images" />
+          </span> <a href="#">
+          <h:graphicImage name="thumb1.gif" library="images" styleClass="thumb"/>
+          </a> </div>
+        </div>
+        <div class="new_prod_box"> <a href="#">product name</a>
+          <div class="new_prod_bg"> <span class="new_icon">
+          <h:graphicImage name="promo_icon.gif" library="images" />
+          </span> <a href="#">
+          <h:graphicImage name="thumb2.gif" library="images" styleClass="thumb"/>
+          </a> </div>
+        </div>
+        <div class="new_prod_box"> <a href="#">product name</a>
+          <div class="new_prod_bg"> <span class="new_icon">
+          <h:graphicImage name="promo_icon.gif" library="images" />
+         </span> <a href="#"><h:graphicImage name="thumb3.gif" library="images" styleClass="thumb" /></a> </div>
+        </div>
+      </div>
+      <div class="right_box">
+        <div class="title"><span class="title_icon"><h:graphicImage name="bullet5.gif" library="images" /></span>Categories</div>
+        
+        <ui:repeat var="cat"  value="#{HomeManagedBean.categories()}"> 
+        <ul class="list">
+          <li><h:commandLink value="#{cat.catname}" action="#{ProductManagedBean.category(cat)}"/></li>
+        </ul>
+        </ui:repeat>
+        <div class="title"><span class="title_icon"><h:graphicImage name="bullet6.gif" library="images" /></span>Partners</div>
+        <ui:repeat var="cat"  value="#{HomeManagedBean.categories()}"> 
+        <ul class="list">
+         <li><h:commandLink value="#{cat.catname}" action="#{ProductManagedBean.category(cat)}" /></li>
+        </ul>
+        </ui:repeat>
+      </div>
+    </div>
+    <!--end of right content-->
+    <div class="clear"></div>
+  </div>
+  <!--end of center content-->
+  <div class="footer">
+    <div class="left_footer"><h:graphicImage name="footer_logo.gif" library="images" /><br />
+      <a href="http://csscreme.com"><h:graphicImage name="csscreme.gif" library="images" /></a></div>
+    <div class="right_footer"> <a href="#">home</a> <a href="#">about us</a> <a href="#">services</a> <a href="#">privacy policy</a> <a href="#">contact us</a> </div>
+  </div>
+</div>
+
+</h:form>
+
+</body>
+</html>

@@ -1,0 +1,66 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html">
+
+<h:head>
+
+	<title></title>
+
+</h:head>
+
+<body>
+	<ui:composition template="templates/templateuser.xhtml">
+		<ui:define name="content">
+
+
+
+			<div class="title">
+				<span class="title_icon"><h:graphicImage name="bullet1.gif" library="images" /></span>Special
+				gifts
+			</div>
+			
+			<ui:repeat var="spro"  value="#{ProductManagedBean.specialProducts}" >
+			
+			<div class="feat_prod_box">
+				<div class="prod_img">
+						<h:commandLink action="#{ProductManagedBean.details(spro)}" ><h:graphicImage name="#{spro.photo}" library="images" /></h:commandLink>
+				</div>
+				<div class="prod_det_box">
+					<span class="special_icon"><h:graphicImage name="special_icon.gif" library="images" />
+					</span>
+					<div class="box_top"></div>
+					<div class="box_center">
+						<div class="prod_title">#{spro.prodname}</div>
+						<p class="details">
+							#{spro.describation}</p>
+							<h:commandLink action="#{ProductManagedBean.details(spro)}"  styleClass="more">
+						- more details -
+						</h:commandLink>
+						<div class="clear"></div>
+					</div>
+					<div class="box_bottom"></div>
+				</div>
+				<div class="clear"></div>
+			</div>
+			
+				</ui:repeat>
+				
+				
+			
+			<div class="pagination">
+				<span class="disabled">&lt;&lt;</span><span class="current">1</span><a
+					href="#">2</a><a href="#">3</a>…<a href="#">10</a><a href="#">11</a><a
+					href="#">&gt;&gt;</a>
+			</div>
+			<div class="clear"></div>
+
+
+
+
+		</ui:define>
+	</ui:composition>
+
+</body>
+</html>

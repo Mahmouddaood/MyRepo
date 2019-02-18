@@ -1,0 +1,55 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html">
+
+<h:head>
+
+	<title></title>
+
+</h:head>
+
+<body>
+	<ui:composition template="templates/templateuser.xhtml">
+		<ui:define name="content">
+
+
+   
+			<div class="crumb_nav">
+				<h:commandLink value="home"  action="#{HomeManagedBean.index()}"/> &gt;&gt; #{ProductManagedBean.catName}
+			</div>
+			<div class="title">
+				<span class="title_icon"><h:graphicImage name="bullet1.gif"
+						library="images" /></span>Category products
+			</div>
+			<div class="new_products">
+			 <ui:repeat var="p" value="#{ProductManagedBean.products}" >
+				<div class="new_prod_box">
+					<h:commandLink  value="#{p.prodname}"   action="#{ProductManagedBean.details(p)}" />
+					<div class="new_prod_bg">
+					<h:commandLink action="#{ProductManagedBean.details(p)}" >
+					<h:graphicImage name="#{p.photo}" library="images"
+								styleClass="thumb" />
+					</h:commandLink>
+						
+					</div>
+				</div>
+</ui:repeat>
+
+				<div class="pagination">
+					<span class="disabled">&lt;&lt;</span><span class="current">1</span><a
+						href="#">2</a><a href="#">3</a>…<a href="#">10</a><a href="#">11</a><a
+						href="#">&gt;&gt;</a>
+				</div>
+			</div>
+			<div class="clear"></div>
+
+
+
+
+		</ui:define>
+	</ui:composition>
+
+</body>
+</html>

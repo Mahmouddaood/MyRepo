@@ -1,0 +1,124 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html">
+
+<h:head>
+
+<h:outputStylesheet library="css" name="lightbox.css" ></h:outputStylesheet>
+<h:outputScript library="js"  name="effects.js"></h:outputScript>
+<h:outputScript   library="js"  name="scriptaculous.js" ></h:outputScript>
+<h:outputScript  library="js"  name="prototype.js"></h:outputScript>
+<h:outputScript  library="js"  name="lightbox.js" ></h:outputScript>
+<h:outputScript  library="js"  name="java.js" ></h:outputScript>
+	<title></title>
+
+</h:head>
+
+
+<body>
+	<ui:composition template="templates/templateuser.xhtml">
+		<ui:define name="content">
+
+
+		 
+				<div class="crumb_nav">
+					<h:commandLink action="#{HomeManagedBean.index()}" value="Home" /> &gt;&gt; #{ProductManagedBean.product.prodname}
+				</div>
+				<div class="title">
+					<span class="title_icon"><h:graphicImage name="bullet1.gif"
+							library="images" /></span>#{ProductManagedBean.product.prodname}
+				</div>
+				<div class="feat_prod_box_details">
+					<div class="prod_img">
+						<h:commandLink action="#{ProductManagedBean.details(ProductManagedBean.product)}"><h:graphicImage name="#{ProductManagedBean.product.photo}" library="images" /></h:commandLink>
+						
+						 <a href="images/big_pic.jpg" rel="lightbox">
+						 <h:graphicImage
+										name="zoom.gif" library="images" />
+										</a>
+					</div>
+					<div class="prod_det_box">
+						<div class="box_top"></div>
+						<div class="box_center">
+							<div class="prod_title">Details</div>
+							<p class="details">
+								#{ProductManagedBean.product.describation}
+							</p>
+							<div class="price">
+								<strong>PRICE:</strong> <span class="red">#{ProductManagedBean.product.price} $</span>
+							</div>
+							<div class="price">
+								<strong>COLORS:</strong> <span class="colors"><h:graphicImage
+										name="color1.gif" library="images" /></span> <span class="colors"><h:graphicImage
+										name="color2.gif" library="images" /></span> <span class="colors"><h:graphicImage
+										name="color3.gif" library="images" /></span>
+							</div>
+							<h:commandLink action="#{CartManagedBean.buyProduct(ProductManagedBean.product)}" styleClass="more"><h:graphicImage name="order_now.gif"
+									library="images" /></h:commandLink>
+							<div class="clear"></div>
+						</div>
+						<div class="box_bottom"></div>
+					</div>
+					<div class="clear"></div>
+				</div>
+				<div id="demo" class="demolayout">
+					<ul id="demo-nav" class="demolayout">
+						<li><a class="active" href="#tab1">More details</a></li>
+						<li><a class="" href="#tab2">Related Products</a></li>
+					</ul>
+					<div class="tabs-container">
+						<div style="display: block;" class="tab" id="tab1">
+							<p class="more_details">#{ProductManagedBean.product.describation}</p>
+							
+							<!-- related -->
+							
+							
+								<div  class="tab" id="tab2">
+						<ui:repeat var="pro"  value="#{ProductManagedBean.products}">
+							<div class="new_prod_box">
+									<h:commandLink action="#{ProductManagedBean.details(pro)}" >#{pro.prodname}</h:commandLink>
+								<div class="new_prod_bg">
+										<h:commandLink action="#{ProductManagedBean.details(pro)}" ><h:graphicImage name="#{pro.photo}"
+											library="images" styleClass="thumb" /></h:commandLink>
+								</div>
+							</div>
+							</ui:repeat>
+							<div class="clear"></div>
+						</div>
+						
+						
+							
+							
+												</div>
+						<div style="display: none;" class="tab" id="tab2">
+						<ui:repeat var="pro"  value="#{ProductManagedBean.products}">
+							<div class="new_prod_box">
+								<a href="#">#{pro.prodname}</a>
+								<div class="new_prod_bg">
+									<a href="#"><h:graphicImage name="#{pro.photo}"
+											library="images" styleClass="thumb" /></a>
+								</div>
+							</div>
+							</ui:repeat>
+							<div class="clear"></div>
+						</div>
+					</div>
+				</div>
+				<div class="clear"></div>
+			
+
+
+<script type="text/javascript">
+
+var tabber1 = new Yetii({
+id: 'demo'
+});
+
+</script>
+		</ui:define>
+	</ui:composition>
+
+</body>
+</html>

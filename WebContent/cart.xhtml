@@ -1,0 +1,78 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html">
+
+<h:head>
+
+	<title></title>
+
+</h:head>
+
+<body>
+	<ui:composition template="templates/templateuser.xhtml">
+		<ui:define name="content">
+
+
+
+
+			<div class="title">
+				<span class="title_icon"><h:graphicImage name="bullet1.gif"
+						library="images" /></span>My cart
+			</div>
+			<div class="feat_prod_box_details">
+				<table class="cart_table">
+					<tbody>
+						<tr class="cart_title">
+						    <td>Option</td>
+							<td>Item pic</td>
+							<td>Product name</td>
+							<td>Unit price</td>
+							<td>Qty</td>
+							<td>Total</td>
+						</tr>
+						
+						<ui:repeat var="cart"  value="#{CartManagedBean.cart}" varStatus="i">
+						<tr>
+						
+						   <td> <h:commandLink action="#{CartManagedBean.removeProduct(i.index)}"> X </h:commandLink>  </td>
+							<td>
+							<h:commandLink>
+							<h:graphicImage width="30" styleClass="cart_thumb" library="images" name="#{cart.product.photo}" /></h:commandLink>
+							</td>
+							<td>#{cart.product.prodname}</td>
+							<td>#{cart.product.price}$</td>
+							<td>#{cart.quantity}</td>
+							<td>#{cart.product.price * cart.quantity }$</td>
+						</tr>
+
+   </ui:repeat>
+						<tr>
+							<td colspan="5" class="cart_total"><span class="red">TOTAL
+									SHIPPING:</span></td>
+							<td>250$</td>
+						</tr>
+						<tr>
+							<td colspan="5" class="cart_total"><span class="red">TOTAL:</span></td>
+							<td>#{CartManagedBean.total()}$</td>
+						</tr>
+					</tbody>
+				</table>
+				<h:commandLink action="#{HomeManagedBean.index}"  styleClass="continue"> &lt; continue</h:commandLink>
+				
+				 <a href="#"
+					class="checkout">checkout &gt;</a>
+			</div>
+			<div class="clear"></div>
+
+
+
+
+
+
+		</ui:define>
+	</ui:composition>
+
+</body>
+</html>
